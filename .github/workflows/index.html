@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ungkapan Perasaan – Safahatul Maolaya Safitri</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
+  <!-- Lib tambahan (sesuai websitemu) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.3/dist/vanilla-tilt.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+
+  <style>
+    /* ========== RESET & BASE ========== */
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --primary:#ff6b6b;
+      --accent:#ffd166;
+      --soft:#6a8cff;
+      --bg-dark:#081229;
+      --glass: rgba(255,255,255,0.06);
+      --glass-2: rgba(255,255,255,0.08);
+      --text-light: #f4f7ff;
+      --muted: #cbd5e1;
+    }
+    html,body{height:100%}
+    body{
+      font-family:"Poppins",sans-serif;
+      background:linear-gradient(180deg,#071022 0%, #0f172a 50%, #0b1220 100%);
+      color:var(--text-light);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+      transition:background .4s, color .4s;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+/* LOADING SCREEN */
+#loading {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #071022, #051026);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+#loading .wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Spinner multi-layer */
+.spinner-layer {
+  position: relative;
+  width: 70px;
+  height: 70px;
+}
+
+.spinner-layer .circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 5px solid transparent;
+  border-top-color: #00aaff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.spinner-layer .circle1 { animation-duration: 1s; }
+.spinner-layer .circle2 { animation-duration: 1.5s; border-top-color: #aa00ff; }
+.spinner-layer .circle3 { animation-duration: 2s; border-top-color: #ff5500; }
+
+/* Teks animasi */
+#loading .text {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  animation: fadeText 1.5s infinite alternate;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeText {
+  0% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-4px); }
+  100% { opacity: 0.3; transform: translateY(0); }
+}
+
+    /* ========== HEADER ========== */
+    header{position:fixed;top:0;left:0;width:100%;padding:18px 28px;display:flex;justify-content:space-between;align-items:center;z-index:1200;background:linear-gradient(180deg, rgba(7,10,20,0.65), rgba(7,10,20,0.25));backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03)}
+    header .logo{display:flex;align-items:center;gap:12px}
+    header .logo .icon{width:44px;height:44px;border-radius:999px;background:linear-gradient(135deg,var(--primary),#ff9a9e);display:grid;place-items:center;font-size:20px;box-shadow:0 8px 30px rgba(255,107,107,.12)}
+    header .logo h1{font-size:1rem;font-weight:700;letter-spacing:.4px}
+    header nav{display:flex;gap:10px;align-items:center}
+    .menu-btn{font-size:20px;cursor:pointer;padding:8px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.03)}
+    .menu-btn:hover{transform:translateY(-2px)}
+
+    /* ========== SIDEBAR ========== */
+    .sidebar{position:fixed;top:0;right:-320px;width:320px;height:100%;background:linear-gradient(180deg, rgba(12,17,34,.98), rgba(10,14,26,.98));transition:.45s;z-index:1300;padding:28px;box-shadow:-20px 0 60px rgba(2,6,23,.6)}
+    .sidebar.active{right:0}
+    .sidebar .close{display:flex;justify-content:flex-end}
+    .sidebar .close i{font-size:20px;cursor:pointer}
+    .sidebar .menu{margin-top:10px;display:flex;flex-direction:column;gap:12px}
+    .sidebar .menu a{padding:10px 12px;border-radius:10px;background:transparent;color:var(--text-light);font-weight:600;border:1px solid rgba(255,255,255,0.03)}
+    .sidebar .menu a:hover{background:linear-gradient(90deg,var(--primary),var(--soft));color:#071022}
+
+    /* ========== CURSOR GLOW ========== */
+    #cursor-glow{position:fixed;width:24px;height:24px;background:rgba(255,107,107,.18);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);filter:blur(10px);z-index:999}
+
+    /* ========== INTRO / HERO ========== */
+    #intro{height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:40px;overflow:hidden}
+    #intro .bg-orn{position:absolute;inset:0;z-index:0;opacity:.12;pointer-events:none;background:
+      radial-gradient(800px 400px at 10% 20%, rgba(255,107,107,.12), transparent 8%),
+      radial-gradient(600px 300px at 80% 80%, rgba(106,140,255,.06), transparent 8%);}
+    #intro .card{position:relative;z-index:2;max-width:1100px;padding:36px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));box-shadow:0 40px 80px rgba(2,6,23,.6);border:1px solid rgba(255,255,255,0.04);display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
+    #intro .left h2{font-size:1.2rem;color:var(--accent);font-weight:700;letter-spacing:.8px;margin-bottom:12px}
+    #intro .left h1{font-family:'Pacifico',cursive;font-size:2.8rem;margin-bottom:8px;background:linear-gradient(90deg,var(--primary),var(--soft));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    #intro .left p{color:var(--muted);line-height:1.7}
+    .btn-glow{display:inline-block;margin-top:14px;padding:10px 18px;border-radius:999px;background:linear-gradient(90deg,var(--primary),var(--accent));color:#071022;font-weight:700;border:none;cursor:pointer;box-shadow:0 12px 40px rgba(255,107,107,.12)}
+    .btn-glow:hover{transform:translateY(-4px)}
+
+    /* small hero image */
+    .hero-image{width:100%;height:420px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.04);box-shadow:0 12px 30px rgba(2,6,23,.6)}
+    .hero-image img{width:100%;height:100%;object-fit:cover}
+
+    /* ========== MAIN SECTIONS ========== */
+    main{padding:120px 40px 80px;z-index:1;position:relative}
+    section{padding:48px 0;border-bottom:1px solid rgba(255,255,255,0.02)}
+    .container{max-width:1100px;margin:0 auto;padding:0 16px}
+
+    .section-title{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-bottom:20px}
+    .section-title h2{font-size:1.6rem;color:var(--primary);font-weight:800}
+    .section-title p{color:var(--muted);font-size:0.95rem}
+
+    /* glass content block */
+    .glass{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 18px 40px rgba(2,6,23,.6);color:var(--text-light);line-height:1.8}
+
+    /* text big */
+    .lead{font-size:1.05rem;color:var(--muted);line-height:1.9}
+
+    /* two-column layout */
+    .cols{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start}
+    .cols .right{position:relative}
+
+    /* quote cards */
+    .quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:14px}
+    .quote{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
+    .quote p{font-style:italic;color:var(--muted)}
+    .quote .who{margin-top:8px;font-weight:700;color:var(--text-light);font-size:0.9rem}
+
+/* Gallery Container */
+.swiper {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+/* Swiper Slide */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main Gallery Images */
+.gallery-img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;        /* pastikan gambar tetap penuh */
+  border-radius: 16px;      /* rounded lebih smooth */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+/* Grid Layout */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+/* Grid Images */
+.gallery-grid img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+    /* timeline */
+    .timeline{position:relative;padding-left:26px;margin-top:20px}
+    .timeline:before{content:"";position:absolute;left:6px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--primary),var(--soft));opacity:.9;border-radius:10px}
+    .timeline-item{position:relative;padding:14px 16px;margin-bottom:18px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+    .timeline-item .time{font-size:12px;color:var(--muted);font-weight:700}
+    .timeline-item .title{font-weight:700;margin-top:6px}
+    .timeline-item .dot{position:absolute;left:-10px;top:18px;width:18px;height:18px;border-radius:50%;background:var(--primary);box-shadow:0 6px 20px rgba(255,107,107,.18)}
+
+    /* long paragraphs helper */
+    .long-para{white-space:pre-wrap}
+
+    /* prayers box */
+    .prayer-box{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);max-height:260px;overflow:auto}
+
+    /* cake / interactive */
+    .cake-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:12px}
+    .plate{width:360px;height:220px;border-radius:50%;background:radial-gradient(circle at 30% 20%, #e6e9ff, #bfcfff);display:grid;place-items:center}
+    .cake{width:76%;height:160px;position:relative}
+    .layer{position:absolute;left:50%;transform:translateX(-50%);width:100%;height:44px;border-radius:10px;background:linear-gradient(90deg,#fff,#ffeefd)}
+    .layer-bottom{bottom:0}
+    .layer-middle{bottom:48px;width:82%}
+    .layer-top{bottom:92px;width:64%}
+    .candles{position:absolute;left:50%;transform:translateX(-50%);bottom:116px;display:flex;gap:12px}
+    .candle{width:12px;height:44px;border-radius:6px;background:linear-gradient(180deg,#ffdfe8,#ffc1d4);position:relative}
+    .candle .flame{position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:12px;height:18px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;background:radial-gradient(ellipse at center,#fff9c4,#ffdd57 50%, #ff8a00 85%);box-shadow:0 0 12px rgba(255,170,85,.25)}
+
+    /* footer */
+    footer{padding:28px 0;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));border-top:1px solid rgba(255,255,255,0.02);margin-top:24px}
+    footer .wrap{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+    footer .left p{color:var(--muted)}
+    footer .right small{color:var(--muted)}
+
+    /* responsive */
+    @media (max-width:980px){
+      .cols, .container{padding:0 12px}
+      .cols{grid-template-columns:1fr}
+      #intro .card{grid-template-columns:1fr;gap:18px}
+      .hero-image{height:320px}
+      .gallery-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:520px){
+      header{padding:12px 16px}
+      main{padding-top:100px}
+      .gallery-grid img{height:120px}
+      .swiper .gallery-img{height:180px}
+      .quote{font-size:0.95rem}
+      .timeline{padding-left:18px}
+      .sidebar{width:100%;right:-100%}
+    }
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .center{display:grid;place-items:center}
+    .mb-12{margin-bottom:12px}
+    .mt-12{margin-top:12px}
+    /* Video Background */
+#bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: brightness(.35);
+}
+
+/* Overlay full layar */
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  z-index: 10;
+}
+
+/* Tombol Mulai pojok bawah kanan */
+#startBtn {
+  position: absolute;
+  bottom: 20px;   /* jarak dari bawah */
+  right: 20px;    /* jarak dari kanan */
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  background: #ff4d6d;
+  color: white;
+  cursor: pointer;
+  transition: transform .2s, background .3s;
+}
+
+#startBtn:hover {
+  transform: scale(1.05);
+  background: #ff1e50;
+}
+/*backgrouns*/
+
+.swiper-slide {
+  width: 100%;
+  height: 280px; /* atur sesuai selera, bisa 250–350px */
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* gambar selalu utuh */
+  background: transparent; /* biar belakangnya transparan */
+}
+
+  </style>
+</head>
+<body>
+<!-- Background Video -->
+<video autoplay muted loop playsinline preload="auto" id="bg-video"
+  style="position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:brightness(.35);">
+  <source src="https://files.catbox.moe/e4gvny.mp4" type="video/mp4">
+</video>
+
+<!-- Overlay tombol mulai -->
+<div id="overlay" style="position:fixed;inset:0;display:flex;justify-content:center;align-items:center;background:rgba(0,0,0,.6);z-index:10;">
+  <button id="startBtn" style="padding:15px 30px;font-size:1.2rem;font-weight:bold;border:none;border-radius:12px;background:#ff4d6d;color:white;cursor:pointer;">
+    Mulai
+  </button>
+</div>
+
+<!-- Audio -->
+<audio id="bg-music" loop>
+  <source src="https://files.catbox.moe/e4gvny.mp4" type="audio/mp4">
+</audio>
+
+<!-- Audio -->
+<audio id="bg-music" loop>
+  <source src="https://files.catbox.moe/e4gvny.mp4" type="audio/mp4">
+</audio>
+  <!-- loading -->
+  <div id="loading">
+    <div class="wrap">
+      <div class="spinner"></div>
+      <div class="text">Sedang mempersiapkan... Mohon tunggu sebentar.</div>
+    </div>
+  </div>
+
+  <!-- cursor glow -->
+  <div id="cursor-glow"></div>
+
+  <!-- header -->
+  <header>
+    <div class="logo">
+      <div class="icon"><i class="fas fa-heart"></i></div>
+      <h1>Ungkapan Untuk Safahatul</h1>
+    </div>
+    <nav>
+      <button class="menu-btn" onclick="toggleSidebar()"><i class="fas fa-ellipsis-v"></i></button>
+    </nav>
+  </header>
+
+  <!-- sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="close"><i class="fas fa-times" onclick="toggleSidebar()"></i></div>
+    <div class="menu">
+      <a href="#intro">Beranda</a>
+      <a href="#about">Tentang Safaa</a>
+      <a href="#feelings">Ungkap Perasaan</a>
+      <a href="#gallery">Galeri Kenangan</a>
+      <a href="#quotes">Kutipan</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#prayers">Doa & Harapan</a>
+      <a href="#cake">Untukmu</a>
+      <a href="#from-dimas">Dari Dimas</a>
+      <a href="#contact">Kontak</a>
+    </div>
+  </aside>
+
+  <!-- intro / hero -->
+  <section id="intro">
+    <div class="bg-orn"></div>
+    <div class="card" data-aos="zoom-in">
+      <div class="left">
+        <h2>Untukmu, Safaa</h2>
+        <h1>Safahatul Maolaya Safitri</h1>
+        <p class="lead">Halaman ini kubuat dari keberanian kecil: untuk mengatakan apa yang selama ini hanya tersimpan. Di sini aku menulis, merangkai kata, mengenang, dan berharap. Sebuah ungkapan yang sederhana, tapi datang dari tempat yang tulus.</p>
+
+        <div style="margin-top:14px">
+          <button class="btn-glow" onclick="openHeartModal()">Baca Selengkapnya</button>
+          <button class="btn-glow" style="background:linear-gradient(90deg,#6a8cff,#ffd166);margin-left:10px" onclick="launchConfetti()">🎉 Rayakan</button>
+        </div>
+
+        <div class="mt-12">
+          <small class="muted">Tip: klik tombol "Baca Selengkapnya" untuk membuka pesan rahasia.</small>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="hero-image" data-aos="fade-left">
+          <img src="https://files.catbox.moe/9m6a8m.jpg" alt="Safaa">
+        </div>
+        <div class="mt-12 glass center" style="padding:12px;margin-top:12px">
+          <div style="text-align:center">
+            <div style="font-weight:800">Kumpulan Pesan</div>
+            <small class="muted">Pesan, harapan, dan doa yang kusimpan untukmu.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>Tentang Safaa</h2>
+          <p>Kenapa aku menulis ini? Karena setiap ada momen, wajahmu muncul di pikiranku. Aku ingin merangkai semua itu menjadi kata.</p>
+        </div>
+
+        <div class="cols">
+          <div>
+            <div class="glass">
+              <p class="long-para">
+                Safahatul Maolaya Safitri — namamu begitu lembut ketika diucapkan. Aku ingat pertama kali melihatmu: langkahmu ringan, senyummu hangat. Sejak saat itu, ada sesuatu yang berubah; dunia terasa sedikit lebih cerah bila kau ada di dekatku. Aku menuliskan bagian demi bagian tentangmu: bagaimana caramu menolong tanpa pamrih, bagaimana suaramu meneduhkan, bagaimana tawa kecilmu membuat hari yang berat terasa ringan.
+                
+                Di sini aku ingin mencatat detail-detail kecil yang sering terlupakan: cara kamu menyisir rambut saat sibuk, kebiasaanmu menempatkan barang ke tempat yang sama, cara mata berbinar ketika bercerita tentang sesuatu yang kamu cintai. Semua detail ini, bagiku, berharga.
+              </p>
+              
+              <p class="long-para mt-12">
+                Jangan khawatir, ini bukan pesan berlebihan. Ini hanya jujur. Aku ingin kau tahu bahwa ada seseorang yang menghargai setiap hal kecil tentangmu. Ada seseorang yang memperhatikan, mendengar, dan merasa damai saat bersamamu. Dan aku berharap, semoga tulisan ini bisa menyampaikan setitik dari segala perasaan yang kusimpan.
+              </p>
+
+              <div class="mt-12 quotes">
+                <div class="quote">
+                  <p>"Setiap kali kamu tersenyum, dunia seolah berbalik menjadi hangat."</p>
+                  <div class="who">— Suatu hari yang tak terlupakan</div>
+                </div>
+                <div class="quote">
+                  <p>"Keberadaanmu membuat rutinitas menjadi sesuatu yang dirindukan."</p>
+                  <div class="who">— Hati yang memperhatikan</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- panjang tambahan supaya konten besar -->
+            <div class="glass mt-12">
+              <h3 style="margin-bottom:8px">Catatan kecil</h3>
+              <p class="muted">
+                Aku menulis lebih banyak tentangmu, bukan karena ingin pamer kata-kata, tapi karena aku takut suatu hari lupa pada hal-hal kecil yang membuatmu 'kamu'. Maka halaman ini kukerjakan—sebagai arsip kenangan.
+              </p>
+
+              <!-- menambah banyak paragraf supaya panjang -->
+              <div style="margin-top:14px">
+                <p class="long-para">
+                  Paragraf tambahan 1: Ketika kau tertawa, ada getar yang tidak bisa dijelaskan. Tertawamu menular, tertawamu mengundang cerita-cerita ringan yang kemudian jadi kenangan.
+                </p>
+                <p class="long-para mt-8">
+                  Paragraf tambahan 2: Ketika kau berbicara tentang cita-cita, matamu berbinar. Ada keyakinan yang tulus di sana. Aku ingin menjadi saksi perjalananmu, bukan untuk mengatur, tapi untuk mendukung.
+                </p>
+                <p class="long-para mt-8">
+                  Paragraf tambahan 3: Bila suatu saat kau lelah, semoga halaman ini bisa menjadi pengingat bahwa ada seseorang yang mendoakan, yang ingin kau tenang, dan yang berharap kau tetap percaya diri.
+                </p>
+                <p class="long-para mt-8">
+                  Paragraf tambahan 4: Aku menuliskan ini bukan untuk mendapat balasan, melainkan sebagai bentuk keberanian untuk berkata jujur pada diri sendiri tentang apa yang kurasakan.
+                </p>
+                <p class="long-para mt-8">
+                  Paragraf tambahan 5: Bila kau membaca ini dan tersenyum, maka semua upaya menulis ini terasa berharga.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="right">
+            <div class="glass">
+              <h3>Info Singkat</h3>
+              <p class="muted">Nama: Safahatul Maolaya Safitri</p>
+              <p class="muted">Kesukaan: Senyum yang tulus, cerita-cerita sederhana, dan kopi/teh hangat</p>
+              <p class="muted">Pesan singkat: Tetaplah menjadi dirimu yang lembut itu.</p>
+
+              <div style="margin-top:12px">
+                <button class="btn-glow" onclick="openModal('Surprise', 'https://files.catbox.moe/zev9ut.jpg')">Lihat Foto Favorit</button>
+              </div>
+            </div>
+
+            <!-- list panjang: 20 alasan -->
+            <div class="glass mt-12">
+              <h3>20 Alasan Mengapa Aku Terpikat</h3>
+              <ol style="margin-top:10px;color:var(--muted);line-height:1.9">
+                <li>Kelembutan suaramu.</li>
+                <li>Cara kau menatap dunia dengan rasa ingin tahu.</li>
+                <li>Kamu hadir tanpa banyak janji, tapi setia pada tindakan.</li>
+                <li>Keringat kecil kala berusaha—menunjukkan kerja keras.</li>
+                <li>Senyummu yang sederhana namun bermakna.</li>
+                <li>Ketulusanmu saat membantu orang lain.</li>
+                <li>Cara kau menyimpan kenangan kecil.</li>
+                <li>Kamu menghargai hal-hal sederhana.</li>
+                <li>Caramu menjaga orang-orang yang kau sayang.</li>
+                <li>Ketika kau memberi semangat tanpa diminta.</li>
+                <li>Kamu punya rasa humor yang membuat hari cerah.</li>
+                <li>Kau menginspirasi dengan tindakan, bukan hanya kata.</li>
+                <li>Cara kau rapi dalam hal-hal kecil.</li>
+                <li>Kau sabar saat hal-hal tidak berjalan mulus.</li>
+                <li>Caramu percaya pada mimpi.</li>
+                <li>Kamu itu tulus, sampai ke akar kecilmu.</li>
+                <li>Caramu menyeimbangkan serius dan bercanda.</li>
+                <li>Kau selalu mencari sisi baik dalam orang.</li>
+                <li>Kepercayaan yang kau berikan sederhana tapi bernilai.</li>
+                <li>Karena kau, aku ingin jadi versi terbaikku.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNGKAP PERASAAN -->
+    <section id="feelings">
+      <div class="container">
+        <div class="section-title">
+          <h2>Ungkapan Perasaan</h2>
+          <p>Kumpulan kata-kata yang kuberikan untukmu. Bacalah perlahan.</p>
+        </div>
+
+        <div class="glass">
+          <h3>Aku Ingin Jujur</h3>
+          <p class="long-para">
+            Safaa, aku menyimpan perasaan ini lama. Bukan karena takut, tetapi karena aku ingin menyusunnya rapi sebelum kuberikan padamu. Ada rasa kagum yang besar, ada rasa nyaman yang tak mudah tergantikan, ada rasa harap yang lembut. Aku menyukaimu karena kamu menjadi tempat pulang yang membuatku tenang.
+          </p>
+
+          <p class="long-para mt-12">
+            Kata-kata ini tak lengkap menggantikan tatapan, pegangan tangan, atau momen sederhana yang bisa kusampaikan secara langsung. Namun kuharap setidaknya halaman ini memberi gambaran jujur tentang perasaan yang kukumpulkan: perasaan yang tumbuh, lembut, dan tulus.
+          </p>
+
+          <div style="margin-top:18px">
+            <button class="btn-glow" onclick="speakFromHeart()">Dengarkan Pesan Suara</button>
+            <button class="btn-glow" style="background:linear-gradient(90deg,#6a8cff,#ffd166);margin-left:8px" onclick="openSecret()">Buka Surat Rahasia</button>
+          </div>
+
+          <!-- tambahkan banyak paragraf lagi untuk panjang -->
+          <div style="margin-top:18px">
+            <p class="long-para">
+              Paragraf 1: Ada hal-hal kecil yang tak kuberitahu siapa pun—tentang bagaimana aku berharap hari-harimu selalu tenang—sebuah doa kecil yang kusisipkan tiap malam.
+            </p>
+            <p class="long-para mt-8">
+              Paragraf 2: Ada saat aku menunggu kabarmu hanya untuk memastikan kau baik-baik saja. Kabar singkatmu cukup membuatku tersenyum seharian.
+            </p>
+            <p class="long-para mt-8">
+              Paragraf 3: Bila kau pernah merasa sendiri, ketahuilah ada seseorang yang memikirkanmu, mengirimkan doa, meski hanya lewat pesan.
+            </p>
+            <p class="long-para mt-8">
+              Paragraf 4: Aku ingin menjadi bagian dari perjalananmu—bukan untuk mengatur, tetapi untuk mendampingi.
+            </p>
+            <p class="long-para mt-8">
+              Paragraf 5: Dan jika suatu hari kau sudi membalas perasaan ini, aku akan menerimanya dengan syukur dan tanggung jawab.
+            </p>
+          </div>
+        </div>
+
+        <!-- panjang tambahan: 10 lagi paragraf -->
+        <div class="glass mt-12">
+          <h4>Catatan Panjang</h4>
+          <div style="margin-top:10px">
+            <p class="long-para">Catatan 1: Aku belajar menerima ketidaksempurnaan karena melihatmu yang juga berproses.</p>
+            <p class="long-para mt-8">Catatan 2: Aku menulis ulang rencana hidup kecilku agar bisa memuat ruang untuk mendukung mimpi-mimpimu.</p>
+            <p class="long-para mt-8">Catatan 3: Dalam banyak percakapan, kau memberi perspektif baru tentang arti kebahagiaan sederhana.</p>
+            <p class="long-para mt-8">Catatan 4: Kadang aku takut menyakiti, maka aku berusaha lebih peka pada bahasa tubuhmu.</p>
+            <p class="long-para mt-8">Catatan 5: Bila jalan kita berbeda, setidaknya aku pernah merasakan hangatnya memiliki rasa untuk seseorang sepertimu.</p>
+            <p class="long-para mt-8">Catatan 6: Aku memikirkan banyak hal kecil yang bisa kuberikan untuk membuat hari-harimu lebih ringan.</p>
+            <p class="long-para mt-8">Catatan 7: Aku ingin menjadi pendengar setia ketika dunia terasa berat bagi mu.</p>
+            <p class="long-para mt-8">Catatan 8: Terima kasih karena sudah mengajarkan arti kejujuran dalam hubungan manusiawi.</p>
+            <p class="long-para mt-8">Catatan 9: Ini bukan ajakan terburu-buru — hanya ungkapan ikhlas yang kupilih pada waktu yang tepat.</p>
+            <p class="long-para mt-8">Catatan 10: Bila kau perlu ruang, aku akan memberikannya; bila kau ingin dekat, aku akan bersiap menyambutmu.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY panjang (mengulang banyak gambar dummy supaya file panjang) -->
+    <section id="gallery">
+      <div class="container">
+        <div class="section-title">
+          <h2>Galeri Kenangan</h2>
+          <p>Beberapa foto kenangan, ada yang diambil sembunyi-sembunyi, ada yang sengaja difoto. Ganti src kalau mau.</p>
+        </div>
+
+        <div class="glass">
+          <!-- Swiper main -->
+          <div class="swiper" id="mainSwiper">
+            <div class="swiper-wrapper">
+<!-- ulangi beberapa gambar (duplikat) supaya banyak -->
+<div class="swiper-slide"><img class="gallery-img" src="https://files.catbox.moe/5befp8.jpg" alt="Kenangan 1"></div>
+<div class="swiper-slide"><img class="gallery-img" src="https://files.catbox.moe/o40wzv.jpg" alt="Kenangan 2"></div>
+<div class="swiper-slide"><img class="gallery-img" src="https://files.catbox.moe/izivgc.jpg" alt="Kenangan 3"></div>
+<div class="swiper-slide"><img class="gallery-img" src="https://files.catbox.moe/ch1fs9.jpg" alt="Kenangan 4"></div>
+<div class="swiper-slide"><img class="gallery-img" src="https://files.catbox.moe/l2epll.jpg" alt="Kenangan 5"></div>
+
+<!-- diganti sesuai link baru -->
+<div class="swiper-slide"><img class="gallery-img" src="https://files.catbox.moe/m72beq.jpg" alt="Kenangan 6"></div>
+<div class="swiper-slide"><img class="gallery-img" src="https://files.catbox.moe/1yxbu1.jpg" alt="Kenangan 7"></div>
+<div class="swiper-slide"><img class="gallery-img" src="https://files.catbox.moe/zev9ut.jpg" alt="Kenangan 8"></div>
+<div class="swiper-slide"><img class="gallery-img" src="https://files.catbox.moe/pf4cjg.jpg" alt="Kenangan 9"></div>
+<div class="swiper-slide"><img class="gallery-img" src="https://files.catbox.moe/u40ap5.jpg" alt="Kenangan 10"></div>
+</div>
+<div class="swiper-pagination"></div>
+</div>
+
+<!-- grid -->
+<div class="gallery-grid mt-12">  
+    <img src="https://files.catbox.moe/5befp8.jpg" alt="">  
+    <img src="https://files.catbox.moe/o40wzv.jpg" alt="">  
+    <img src="https://files.catbox.moe/izivgc.jpg" alt="">  
+    <img src="https://files.catbox.moe/ch1fs9.jpg" alt="">  
+    <img src="https://files.catbox.moe/l2epll.jpg" alt="">  
+    <img src="https://files.catbox.moe/5befp8.jpg" alt="">  
+
+    <!-- gambar baru -->
+    <img src="https://files.catbox.moe/j6fg6b.jpg" alt="">  
+    <img src="https://files.catbox.moe/4wqz7m.jpg" alt="">  
+    <img src="https://files.catbox.moe/b1gf5q.jpg" alt="">  
+    <img src="https://files.catbox.moe/pqhr1p.jpg" alt="">  
+    <img src="https://files.catbox.moe/mujevx.jpg" alt="">  
+    <img src="https://files.catbox.moe/hvpt7v.jpg" alt="">  
+</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTES lote -->
+    <section id="quotes">
+      <div class="container">
+        <div class="section-title">
+          <h2>Kutipan & Pesan Pendek</h2>
+          <p>Kumpulan kutipan romantis yang aku pilih untukmu.</p>
+        </div>
+
+        <div class="glass">
+          <div class="quotes">
+            <div class="quote">
+              <p>"Aku tak tahu kata yang tepat, hanya ada rasa yang selalu ingin kusampaikan."</p>
+              <div class="who">— Dari Hati</div>
+            </div>
+            <div class="quote">
+              <p>"Dalam sunyi, aku teringat wajahmu; dalam riuh, aku rindu hadirmu."</p>
+              <div class="who">— Rindu yang sederhana</div>
+            </div>
+            <div class="quote">
+              <p>"Cinta bukan tentang memiliki, tapi tentang memberi ruang yang aman."</p>
+              <div class="who">— Pengertian</div>
+            </div>
+            <div class="quote">
+              <p>"Senyummu adalah alasan aku mau berusaha menjadi lebih baik."</p>
+              <div class="who">— Janji kecil</div>
+            </div>
+          </div>
+
+          <!-- tambahkan banyak quote lagi untuk panjang -->
+          <div class="mt-12">
+            <div class="quote mb-12"><p>"Kau sederhana namun mempesona." <span class="who">— 1</span></p></div>
+            <div class="quote mb-12"><p>"Hadirmu adalah hadiah." <span class="who">— 2</span></p></div>
+            <div class="quote mb-12"><p>"Terima kasih untuk cerita-cerita kecil." <span class="who">— 3</span></p></div>
+            <div class="quote mb-12"><p>"Kau mengajarkanku arti menghargai." <span class="who">— 4</span></p></div>
+            <div class="quote mb-12"><p>"Bersamamu belajar sabar terasa lebih mudah." <span class="who">— 5</span></p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE panjang -->
+    <section id="timeline">
+      <div class="container">
+        <div class="section-title">
+          <h2>Timeline Perjalanan</h2>
+          <p>Beberapa momen penting yang aku ingat—tertulis agar tak hilang.</p>
+        </div>
+
+        <div class="glass">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div class="time">Pertama kali bertemu</div>
+              <div class="title">Hari dimana aku melihatmu untuk pertama kali</div>
+              <div class="muted">Sebuah kebetulan yang kemudian jadi awal cerita.</div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div class="time">Pembicaraan panjang</div>
+              <div class="title">Malam dimana kita bicara tentang mimpi</div>
+              <div class="muted">Di sana aku tahu: kita punya kompatibilitas nilai.</div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div class="time">Perjalanan kecil</div>
+              <div class="title">Berjalan sambil tertawa, tanpa tujuan pasti</div>
+              <div class="muted">Momen ringan yang menyisakan rindu.</div>
+            </div>
+
+            <!-- ulangi banyak item supaya panjang -->
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div class="time">Detail penting</div>
+              <div class="title">Senyum pertamamu saat melihat kucing</div>
+              <div class="muted">Hal kecil tapi menempel lama di ingatan.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div class="time">Waktu beda</div>
+              <div class="title">Percakapan telepon tengah malam</div>
+              <div class="muted">Ketika kita saling menguatkan satu sama lain.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div class="time">Janji kecil</div>
+              <div class="title">Saling mengingat untuk selalu berdoa</div>
+              <div class="muted">Sebuah kebiasaan yang menenangkan hati.</div>
+            </div>
+
+            <!-- tambahan panjang (ulangi 12 item) -->
+            <div class="timeline-item"><div class="dot"></div><div class="time">Momen-1</div><div class="title">Langkah kecil yang berarti</div><div class="muted">Deskripsi singkat.</div></div>
+            <div class="timeline-item"><div class="dot"></div><div class="time">Momen-2</div><div class="title">Cerita yang lucu</div><div class="muted">Deskripsi singkat.</div></div>
+            <div class="timeline-item"><div class="dot"></div><div class="time">Momen-3</div><div class="title">Canda yang menenangkan</div><div class="muted">Deskripsi singkat.</div></div>
+            <div class="timeline-item"><div class="dot"></div><div class="time">Momen-4</div><div class="title">Hari hujan yang hangat</div><div class="muted">Deskripsi singkat.</div></div>
+            <div class="timeline-item"><div class="dot"></div><div class="time">Momen-5</div><div class="title">Kopi & cerita</div><div class="muted">Deskripsi singkat.</div></div>
+            <div class="timeline-item"><div class="dot"></div><div class="time">Momen-6</div><div class="title">Pesan sederhana</div><div class="muted">Deskripsi singkat.</div></div>
+            <div class="timeline-item"><div class="dot"></div><div class="time">Momen-7</div><div class="title">Pelukan yang menenangkan</div><div class="muted">Deskripsi singkat.</div></div>
+            <div class="timeline-item"><div class="dot"></div><div class="time">Momen-8</div><div class="title">Langkah pelan menuju mimpi</div><div class="muted">Deskripsi singkat.</div></div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOA & HARAPAN (panjang) -->
+    <section id="prayers">
+      <div class="container">
+        <div class="section-title">
+          <h2>Doa & Harapan</h2>
+          <p>Doa-doa terbaik kuuntukkan untuk Safaa — kubuat panjang agar terasa khusyuk.</p>
+        </div>
+
+        <div class="glass">
+          <div class="prayer-box" id="prayerText">
+            <p>✨ Klik tombol di bawah untuk melihat doa, harapan, atau kata manis ✨</p>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn-glow" onclick="showPrayer('doa')">Doa</button>
+            <button class="btn-glow" style="background:linear-gradient(90deg,#6a8cff,#ffd166)" onclick="showPrayer('harapan')">Harapan</button>
+            <button class="btn-glow" onclick="showPrayer('lain')">Kata Manis</button>
+          </div>
+
+          <!-- banyak variasi teks doa/hapran untuk panjang -->
+          <div class="mt-12">
+            <p class="long-para">Doa panjang 1: Ya Allah, lindungilah langkah Safaa, lapangkan rezekinya, permudah urusannya, dan jadikan ia manusia yang membahagiakan sekelilingnya.</p>
+            <p class="long-para mt-8">Doa panjang 2: Semoga hati Safaa selalu dipenuhi kedamaian, dalam setiap keputusan dan perjalanan hidup.</p>
+            <p class="long-para mt-8">Doa panjang 3: Semoga setiap impian yang disematkan dalam hatinya dipermudah cara mencapainya, dan diberi teman setia di setiap langkah.</p>
+            <p class="long-para mt-8">Doa panjang 4: Semoga selalu diberi kesehatan, umur yang berkah, dan cinta yang tulus dari orang-orang baik.</p>
+            <p class="long-para mt-8">Doa panjang 5: Semoga ia selalu menemukan cahaya ketika gelap, dan kekuatan ketika lelah.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAKE / INTERACTIVE -->
+    <section id="cake">
+      <div class="container">
+        <div class="section-title">
+          <h2>Untukmu — Kue Virtual</h2>
+          <p>Sebuah kue kecil sebagai simbol sayang; bisa ditiup dan dinyalakan kembali.</p>
+        </div>
+
+        <div class="glass center">
+          <div class="cake-wrap">
+            <div class="plate">
+              <div class="cake" id="cake">
+                <div class="layer layer-bottom"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-top"></div>
+                <div class="candles">
+                  <div class="candle"><div class="flame"></div></div>
+                  <div class="candle"><div class="flame"></div></div>
+                  <div class="candle"><div class="flame"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:12px">
+              <button class="btn-glow" id="blowBtn">🕯 Tiup Lilin</button>
+              <button class="btn-glow" id="relightBtn" style="background:linear-gradient(90deg,#6a8cff,#ffd166)">🔥 Nyalakan Lagi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FROM DIMAS (personal long) -->
+    <section id="from-dimas">
+      <div class="container">
+        <div class="section-title">
+          <h2>Dari Dimas</h2>
+          <p>Sebuah surat panjang dari aku.</p>
+        </div>
+
+        <div class="glass">
+          <div id="cvText" class="long-para">
+            <!-- teks panjang dibuat di script (typewriter) -->
+          </div>
+
+          <!-- tambahkan CTA -->
+          <div style="margin-top:12px;display:flex;gap:12px">
+            <button class="btn-glow" onclick="shareSite()">🔗 Bagikan Halaman Ini</button>
+            <button class="btn-glow" onclick="downloadLetter()">📩 Simpan Surat</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / FOOTER -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Kontak</h2>
+          <p>Kalau kau merasa nyaman, ini tempatku. Tapi tak perlu dipaksa.</p>
+        </div>
+
+        <div class="glass cols" style="grid-template-columns:1fr 320px">
+          <div>
+            <p class="lead">Jika kau ingin bicara, aku siap mendengarkan. Tidak ada kepastian, hanya kesiapan untuk hadir saat kau perlukan.</p>
+            <form id="contactForm" onsubmit="event.preventDefault(); sendMessage();">
+              <div style="display:grid;gap:8px;margin-top:12px">
+                <input id="name" placeholder="Namamu (opsional)" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text-light)">
+                <input id="email" placeholder="Email (opsional)" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text-light)">
+                <textarea id="message" placeholder="Pesan singkat" rows="4" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text-light)"></textarea>
+                <div style="display:flex;gap:10px">
+                  <button class="btn-glow" type="submit">Kirim</button>
+                  <button class="btn-glow" type="button" onclick="resetForm()" style="background:linear-gradient(90deg,#6a8cff,#ffd166)">Kosongkan</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div>
+            <div class="glass center">
+              <p class="muted">Atau temui aku secara langsung ketika waktunya tepat.</p>
+              <small class="muted">Dimas · Sahabat yang peduli</small>
+            </div>
+            <div class="glass mt-12">
+              <h4>Informasi tambahan</h4>
+              <p class="muted">Halaman ini dibuat khusus: privasi terjaga. Link dan foto bisa diganti kapan saja.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="left">
+        <p>Dibuat dengan penuh ketulusan oleh Dimas · <small class="muted">Untuk Safahatul Maolaya Safitri</small></p>
+      </div>
+      <div class="right">
+        <small class="muted">© <span id="year"></span> Semua hak milik hati</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- modal foto -->
+  <div class="modal" id="projectModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:2000;align-items:center;justify-content:center">
+    <div style="max-width:800px;width:92%;background:#081229;padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.04)">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3 id="modalTitle">Preview</h3>
+        <button onclick="closeModal()" style="background:transparent;border:none;color:var(--text-light);font-size:20px">&times;</button>
+      </div>
+      <img id="modalImage" src="" alt="Preview" style="width:100%;margin-top:12px;border-radius:10px">
+    </div>
+  </div>
+
+  <!-- heart secret modal -->
+  <div class="modal" id="heartModal" style="display:none;position:fixed;inset:0;background:rgba(2,6,23,.85);z-index:2200;align-items:center;justify-content:center">
+    <div style="max-width:720px;width:96%;background:linear-gradient(180deg,#0b1220,#071022);padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 30px 80px rgba(2,6,23,.7)">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3 style="color:var(--primary)">Pesan Rahasia</h3>
+        <button onclick="closeHeartModal()" style="background:transparent;border:none;color:var(--muted);font-size:18px">&times;</button>
+      </div>
+      <div style="margin-top:12px;color:var(--muted);line-height:1.8">
+        <p>Kini aku telah menuliskan semua yang kupunya. Bila kau membaca ini, ketahuilah: tidak ada paksaan, hanya harap yang sederhana. Kalau kau sudi, mari bicara. Kalau belum, biarlah aku menunggu dengan sabar.</p>
+        <p style="margin-top:12px">— Dimas</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // ===== Init helpers =====
+    document.addEventListener("DOMContentLoaded", () => {
+      // hide loading
+      setTimeout(()=>{ document.getElementById("loading").style.display = "none"; }, 4000);
+
+      AOS.init({ duration: 900, once:true });
+
+      // set year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // init typewriters
+      initTypewriters();
+
+      // particles
+      initParticles();
+
+      // swiper init
+      initSwiper();
+
+      // cake sprinkles & candles
+      initCake();
+
+      // cursor
+      initCursor();
+
+      // click sound
+      try{
+        initClickSound();
+      }catch(e){ console.log(e) }
+    });
+
+    // ===== Sidebar toggle =====
+    function toggleSidebar(){ document.getElementById("sidebar").classList.toggle("active"); }
+
+    // ===== Cursor glow =====
+    function initCursor(){
+      const cursor = document.getElementById("cursor-glow");
+      document.addEventListener("mousemove", e => {
+        cursor.style.top = e.clientY + "px";
+        cursor.style.left = e.clientX + "px";
+      });
+    }
+
+    // ===== Particles =====
+    function initParticles(){
+      try{
+        particlesJS("particles-js", {
+          particles: {
+            number: { value: 60, density: { enable: true, value_area: 800 } },
+            color: { value: ["#ff6b6b","#ffd166","#6a8cff"] },
+            shape: { type: "circle" },
+            opacity: { value: .6 },
+            size: { value: 3, random: true },
+            line_linked: { enable: false },
+            move: { enable: true, speed: 2, out_mode: "out" }
+          },
+          interactivity: {
+            events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
+            modes: { repulse: { distance: 100, duration: .4 }, push: { particles_nb: 3 } }
+          },
+          retina_detect: true
+        });
+      }catch(e){ console.log("Particles init error:", e) }
+    }
+
+    // ===== Swiper =====
+    function initSwiper(){
+      try{
+        new Swiper("#mainSwiper", {
+          slidesPerView: 1,
+          loop: true,
+          pagination: { el: ".swiper-pagination", clickable: true },
+          autoplay: { delay: 2600, disableOnInteraction: false },
+          effect: "slide",
+        });
+      }catch(e){ console.log("Swiper init error:", e) }
+    }
+
+    // ===== Typewriters =====
+    function initTypewriters(){
+      // hero short loop
+      const heroEl = document.querySelector("#intro .left .lead");
+      // hero already static; create small type effect in heading instead
+      const heroHeading = document.querySelector("#intro h1");
+      const heroTexts = ["Ada yang ingin kusampaikan...", "Lewat halaman sederhana ini...", "Aku ingin kau tau perasaanku."];
+      let hi = 0, hj = 0, hdel = false;
+      (function typeHero(){
+        const cur = heroTexts[hi];
+        if(!hdel && hj <= cur.length){ heroHeading.textContent = cur.substring(0,hj++); }
+        else if(hdel && hj >= 0){ heroHeading.textContent = cur.substring(0,hj--); }
+        if(hj === cur.length + 1){ hdel = true; setTimeout(typeHero, 1200); return; }
+        if(hj < 0){ hdel = false; hi = (hi+1) % heroTexts.length; setTimeout(typeHero, 300); return; }
+        setTimeout(typeHero, hdel ? 35 : 85);
+      })();
+
+      // about text (full)
+      const aboutEl = document.querySelector("#about .glass .long-para");
+      // it's okay, content already set statically in HTML
+
+      // CV / Dimas long type
+      const cvEl = document.getElementById("cvText");
+      const dimasText = `Untuk Safa tersayang,
+      
+Di hari-hari yang hilir mudik ini, aku menulis sebagai upaya jujur: untuk menyampaikan apa yang selama ini kusembunyikan. Ada rasa kagum, ada rasa nyaman, ada rindu kecil yang terus berulang. Kau mengajarkanku arti kesabaran, kau menularkan kebaikan yang sederhana. Aku ingin menjadi bagian dari perjalananmu, bukan yang mengatur, tetapi yang mendukung.
+      
+Terima kasih sudah menjadi dirimu. Semoga setiap harimu diberkahi, setiap langkah dimudahkan. Bila kelak kau sudi, aku ingin berjalan bersamamu, belajar dan bertumbuh.
+      
+Dari hati yang sederhana,
+Dimas`;
+
+      let di = 0;
+      (function typeDimas(){
+        if(di < dimasText.length){ cvEl.textContent += dimasText.charAt(di++); setTimeout(typeDimas, 18); }
+      })();
+
+      // prayers box initial text handled in HTML
+    }
+
+    // ===== Confetti =====
+    function launchConfetti(){
+      confetti({ particleCount: 200, spread: 100, origin: { y: .6 } });
+    }
+
+    // ===== Modal handlers =====
+    function openModal(title,img){
+      document.getElementById("modalTitle").textContent = title;
+      document.getElementById("modalImage").src = img;
+      document.getElementById("projectModal").style.display = "flex";
+    }
+    function closeModal(){ document.getElementById("projectModal").style.display = "none"; }
+
+    function openHeartModal(){ document.getElementById("heartModal").style.display = "flex"; }
+    function closeHeartModal(){ document.getElementById("heartModal").style.display = "none"; }
+
+    // ===== Cake interaction =====
+    function initCake(){
+      const candles = Array.from(document.querySelectorAll('.candle'));
+      const blowBtn = document.getElementById('blowBtn');
+      const relightBtn = document.getElementById('relightBtn');
+
+      function blow(){
+        candles.forEach(c => c.classList.add('off'));
+        // hide flame via inline style
+        candles.forEach(c => {
+          const f = c.querySelector('.flame');
+          if(f) f.style.opacity = 0;
+        });
+        confetti({ particleCount: 120, spread: 80, origin: { y: .6 } });
+      }
+      function relight(){
+        candles.forEach(c => c.classList.remove('off'));
+        candles.forEach(c => {
+          const f = c.querySelector('.flame');
+          if(f){ f.style.opacity = 1; }
+        });
+      }
+
+      blowBtn.addEventListener('click', blow);
+      relightBtn.addEventListener('click', relight);
+
+      // click single candle toggle
+      candles.forEach(c => c.addEventListener('click', ()=> {
+        c.classList.toggle('off');
+        const f = c.querySelector('.flame');
+        if(f) f.style.opacity = c.classList.contains('off') ? 0 : 1;
+      }));
+    }
+
+    // ===== Prayer show =====
+    function showPrayer(type){
+      const box = document.getElementById("prayerText");
+      let list = [];
+
+      if(type === "doa"){
+        list = [
+          "Semoga Allah selalu menjaga langkah Safaa 🤲",
+          "Semoga hati Safaa selalu diberi ketenangan 🌸",
+          "Semoga Safaa sehat selalu dan dipenuhi kebahagiaan 💕",
+          "Semoga rezeki dan kariernya dilapangkan.",
+          "Semoga selalu dikelilingi orang-orang yang tulus."
+        ];
+      } else if(type === "harapan"){
+        list = [
+          "Semoga mimpi Safaa tercapai satu per satu ✨",
+          "Langkah kecilmu akan jadi perjalanan besar 🌟",
+          "Semoga Safaa selalu dipenuhi keberkahan 🌺",
+          "Semoga impian terwujud dalam waktu yang tepat."
+        ];
+      } else {
+        list = [
+          "Tetaplah jadi Safaa yang ceria dan hangat 💖",
+          "Kehadiranmu selalu membuat dunia lebih indah 🌷",
+          "Kamu itu spesial, jangan pernah lupa itu 🌈",
+          "Jangan takut bermimpi besar."
+        ];
+      }
+
+      const text = list[Math.floor(Math.random() * list.length)];
+      box.innerHTML = `<p class="long-para">${text}</p>`;
+    }
+
+    // ===== Share & contact =====
+    function shareSite(){
+      if(navigator.share){
+        navigator.share({ title:"Ungkapan Untuk Safahatul", url:location.href });
+      } else {
+        navigator.clipboard.writeText(location.href).then(()=> alert("Link disalin ke clipboard"));
+      }
+    }
+
+    function sendMessage(){
+      const name = document.getElementById("name").value || "Anon";
+      const message = document.getElementById("message").value || "";
+      if(!message.trim()){ alert("Tolong isi pesan terlebih dahulu."); return; }
+      alert("Terima kasih! Pesanmu tersimpan secara lokal (demo). Nama: " + name);
+      resetForm();
+    }
+
+    function resetForm(){
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
+    }
+
+    // ===== Download letter as txt =====
+    function downloadLetter(){
+      const cvText = document.getElementById("cvText").innerText || "Surat kosong";
+      const blob = new Blob([cvText], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "surat-untuk-safaa.txt";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    // ===== Click sound =====
+    function initClickSound(){
+      const clickSound = new Audio("https://www.soundjay.com/buttons/sounds/button-3.mp3");
+      document.querySelectorAll(".btn-glow").forEach(btn=>{
+        btn.addEventListener("click", ()=>{ clickSound.currentTime = 0; clickSound.play(); });
+      });
+    }
+
+    // ===== Extra: open secret (simulate) =====
+    function openSecret(){
+      openHeartModal();
+    }
+
+    // ===== small helper: open image modal =====
+    function openModalImage(src,title){
+      openModal(title || "Foto", src);
+    }
+    // Music //
+    const startBtn = document.getElementById("startBtn");
+const overlay = document.getElementById("overlay");
+const bgMusic = document.getElementById("bg-music");
+
+startBtn.addEventListener("click", () => {
+  bgMusic.play();                 // play musik
+  overlay.style.display = "none"; // hilangin overlay
+});
+  </script>
+</body>
+</html>
